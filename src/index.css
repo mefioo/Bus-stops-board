@@ -1,41 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
-@import url('/node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+@import url("/node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 :root {
+  --bs-body-font-family: "Inter";
+  --bs-body-font-size: 14px;
+  --bs-body-bg: #f3f4f9;
+  --bs-border-width: 2px;
+  --bs-card-border-radius: 4px;
+  --bs-link-color: #9a9da4;
+  --bs-link-color-active: #33373c;
+  --bs-link-hover-color: #33373c;
+  --bs-primary-rbg: #1952e1;
+  --card-bg: #fff;
+  --border-dashed-color: #9a9da4;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  height: 64px;
+  font-size: 14px;
+  line-height: 64px;
+  text-decoration: none;
 }
-a:hover {
-  color: #535bf2;
+
+a.active {
+  color: var(--bs-link-color-active) !important;
+  font-weight: 500 !important;
+  border-bottom: 2px solid var(--bs-primary-rbg) !important;
 }
 
 body {
+  margin: 40px 32px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.btn {
+  --bs-btn-border-radius: 4px;
+  --bs-btn-font-weight: 500;
+  --bs-btn-font-size: 12px;
+  --bs-btn-line-height: 16px;
+  --bs-btn-border-width: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary-rbg);
+  --bs-btn-active-bg: #2e3e6e;
+  --bs-btn-hover-bg: #1649ca;
 }
-button:hover {
-  border-color: #646cff;
+
+.card {
+  border-width: 0;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.bus-line-button {
+  min-width: 54px;
+}
+
+.busline-selected-content {
+  height: 444px;
+}
+
+.border-dashed {
+  border: 2px dashed var(--border-dashed-color);
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-24 {
+  font-size: 24px;
 }
