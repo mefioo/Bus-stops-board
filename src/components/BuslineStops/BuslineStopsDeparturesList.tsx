@@ -12,9 +12,13 @@ const BuslineStopsDeparturesList: FC<PropTypes> = ({
   selectedBusStopName,
   selectedLineAndNameBusStops,
 }) => {
-  const sorted = selectedLineAndNameBusStops
-    .map((item) => item.time)
-    .toSorted(sortBusStopsByTime);
+  const sorted = [
+    ...new Set(
+      selectedLineAndNameBusStops
+        .map((item) => item.time)
+        .toSorted(sortBusStopsByTime)
+    ),
+  ];
 
   return (
     <div className="card w-100">

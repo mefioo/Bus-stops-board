@@ -10,7 +10,8 @@ export interface StopType {
 export type SelectedLineType = number | null;
 export type SelectedBusStopType = string | null;
 export enum StopSortFunctionType {
-  default,
+  nameAsc,
+  nameDesc,
   orderAsc,
   orderDesc,
 }

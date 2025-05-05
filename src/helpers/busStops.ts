@@ -16,8 +16,22 @@ export const getStopSortFunctionByType = (type: StopSortFunctionType) => {
       return (a: StopType, b: StopType) => a.order - b.order;
     case StopSortFunctionType.orderDesc:
       return (a: StopType, b: StopType) => b.order - a.order;
-    case StopSortFunctionType.default:
+    case StopSortFunctionType.nameDesc:
+      return (a: StopType, b: StopType) => b.stop.localeCompare(a.stop);
+    case StopSortFunctionType.nameAsc:
     default:
       return (a: StopType, b: StopType) => a.stop.localeCompare(b.stop);
   }
+};
+
+export const getSortTypeByName = (prev: StopSortFunctionType) => {
+  return prev === StopSortFunctionType.nameAsc
+    ? StopSortFunctionType.nameDesc
+    : StopSortFunctionType.nameAsc;
+};
+
+export const getSortTypeByOrder = (prev: StopSortFunctionType) => {
+  return prev === StopSortFunctionType.orderAsc
+    ? StopSortFunctionType.orderDesc
+    : StopSortFunctionType.orderAsc;
 };

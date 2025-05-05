@@ -7,32 +7,40 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import ArrowDownIcon from "../Icons/ArrowDownIcon";
 import List from "../Common/List";
-import { getStopSortFunctionByType } from "@/helpers/busStops";
+import {
+  getSortTypeByName,
+  getSortTypeByOrder,
+  getStopSortFunctionByType,
+} from "@/helpers/busStops";
 
 interface PropTypes {
-  onBusStopSelect: (stop: string) => void;
-  selectedBusStop: SelectedBusStopType;
-  selectedLineBusStops: StopType[];
-  selectedLine: SelectedLineType;
+  maxHeight?: number;
+  onBusStopSelect?: (stop: string) => void;
+  selectedBusStopName?: SelectedBusStopType;
+  selectedBusStops: StopType[];
+  selectedLine?: SelectedLineType;
+  sortByOrder?: boolean;
 }
 
 const BuslineStopsList: FC<PropTypes> = ({
+  maxHeight,
   onBusStopSelect,
-  selectedBusStop,
-  selectedLineBusStops,
+  selectedBusStopName,
+  selectedBusStops,
   selectedLine,
+  sortByOrder,
 }) => {
   const [sortType, setSortType] = useState<StopSortFunctionType>(
-    StopSortFunctionType.default
+    StopSortFunctionType.nameAsc
   );
 
   useEffect(() => {
-    setSortType(StopSortFunctionType.default);
+    setSortType(StopSortFunctionType.nameAsc);
   }, [selectedLine]);
 
   const busStopNames = [
     ...new Set(
-      selectedLineBusStops
+      selectedBusStops
         .toSorted(getStopSortFunctionByType(sortType))
         .map((stop) => stop.stop)
     ).values(),
@@ -40,9 +48,7 @@ const BuslineStopsList: FC<PropTypes> = ({
 
   const arrowClickHandler = () => {
     setSortType((prev) =>
-      prev === StopSortFunctionType.orderAsc
-        ? StopSortFunctionType.orderDesc
-        : StopSortFunctionType.orderAsc
+      sortByOrder ? getSortTypeByOrder(prev) : getSortTypeByName(prev)
     );
   };
 
@@ -57,8 +63,8 @@ const BuslineStopsList: FC<PropTypes> = ({
           <ArrowDownIcon onClick={arrowClickHandler} />
         </div>
         <List
-          activeItem={selectedBusStop}
-          maxHeight={322}
+          activeItem={selectedBusStopName}
+          maxHeight={maxHeight}
           items={busStopNames}
           itemClassName="px-4 py-3"
           onItemClick={onBusStopSelect}

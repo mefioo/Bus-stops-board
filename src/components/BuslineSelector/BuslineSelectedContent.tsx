@@ -40,10 +40,12 @@ const BuslineSelectedContent: FC<PropTypes> = ({ selectedLine }) => {
     <div className="d-flex flex-row gap-3 busline-selected-content">
       {selectedLine ? (
         <BuslineStopsList
+          maxHeight={322}
           onBusStopSelect={selectBusStopHandler}
-          selectedBusStop={selectedBusStopName}
-          selectedLineBusStops={selectedLineBusStops}
+          selectedBusStopName={selectedBusStopName}
+          selectedBusStops={selectedLineBusStops}
           selectedLine={selectedLine}
+          sortByOrder
         />
       ) : (
         <CardPlaceholder text={noBusLineSelectedPlaceholderText} />

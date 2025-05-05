@@ -4,7 +4,7 @@ interface PropTypes {
   activeItem?: string | null | undefined;
   itemClassName?: string;
   items: string[];
-  maxHeight: number | undefined;
+  maxHeight?: number | undefined;
   onItemClick?: (item: string) => void;
 }
 
@@ -16,7 +16,7 @@ const List: FC<PropTypes> = ({
   onItemClick,
 }) => {
   return (
-    <ul className="overflow-auto" style={{ maxHeight }}>
+    <ul className="overflow-auto my-0" style={{ maxHeight }}>
       {items.map((item) => {
         return (
           <li key={item}>
