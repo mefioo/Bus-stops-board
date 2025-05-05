@@ -7,7 +7,7 @@ import {
 
 const Navigation = () => {
   return (
-    <div className="card px-3 d-flex flex-row">
+    <div className="card px-4 d-flex flex-row">
       {timetableNavigationItems.map((item: NavigationItemType) => {
         return <NavigationItem key={item.path} item={item} />;
       })}

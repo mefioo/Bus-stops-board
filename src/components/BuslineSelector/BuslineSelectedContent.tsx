@@ -1,29 +1,60 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import BuslineStopsList from "../BuslineStops/BuslineStopsList";
 import BuslineStopsDeparturesList from "../BuslineStops/BuslineStopsDeparturesList";
 import { SelectedLineType } from "@/types";
 import CardPlaceholder from "../Common/CardPlaceholder";
+import { BusStopsContext } from "../Timetable/BusStopsContext";
+import {
+  noBusLineSelectedPlaceholderText,
+  noBusStopSelectedPlaceholderText,
+} from "@/constants/placeholders";
 
 interface PropTypes {
   selectedLine: SelectedLineType;
 }
 
 const BuslineSelectedContent: FC<PropTypes> = ({ selectedLine }) => {
-  const [selectedBusStop, setSelectedBusStop] = useState<string | null>(null);
+  const { stops } = useContext(BusStopsContext);
+
+  const [selectedBusStopName, setSelectedBusStopName] = useState<string | null>(
+    null
+  );
+
+  useEffect(() => {
+    setSelectedBusStopName(null);
+  }, [selectedLine]);
 
   const placeholderText = selectedLine
-    ? "Please select the bus stop first"
-    : "Please select the bus line first";
+    ? noBusStopSelectedPlaceholderText
+    : noBusLineSelectedPlaceholderText;
+
+  const selectBusStopHandler = (busStop: string) => {
+    setSelectedBusStopName(busStop);
+  };
+
+  const selectedLineBusStops = stops.filter(
+    (stop) => stop.line === selectedLine
+  );
 
   return (
     <div className="d-flex flex-row gap-3 busline-selected-content">
       {selectedLine ? (
-        <BuslineStopsList selectedLine={selectedLine} />
+        <BuslineStopsList
+          onBusStopSelect={selectBusStopHandler}
+          selectedBusStop={selectedBusStopName}
+          selectedLineBusStops={selectedLineBusStops}
+          selectedLine={selectedLine}
+        />
       ) : (
-        <CardPlaceholder text="Please select the bus line first" />
+        <CardPlaceholder text={noBusLineSelectedPlaceholderText} />
       )}
-      {selectedBusStop ? (
-        <BuslineStopsDeparturesList />
+      {selectedBusStopName ? (
+        <BuslineStopsDeparturesList
+          selectedBusStopName={selectedBusStopName}
+          selectedLineAndNameBusStops={selectedLineBusStops.filter(
+            (stop) => stop.stop === selectedBusStopName
+          )}
+        />
       ) : (
         <CardPlaceholder text={placeholderText} />
       )}

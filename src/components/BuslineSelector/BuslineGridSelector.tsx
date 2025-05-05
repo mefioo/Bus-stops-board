@@ -16,8 +16,8 @@ const BuslineGridSelector: FC<PropTypes> = ({ onLineSelect, selectedLine }) => {
   const lines = [...new Set(stops.map((s) => s.line)).values()];
 
   return (
-    <div className="px-3 card">
-      <h3 className="font-14 fw-semibold mt-4">Select Bus Line</h3>
+    <div className="px-4 card">
+      <h6 className="mt-4">Select Bus Line</h6>
       {loading && <Loading />}
       {error && <GenericError />}
       {!error && (

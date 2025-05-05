@@ -15,7 +15,9 @@ const BusLinesView = () => {
         onLineSelect={lineSelectHandler}
         selectedLine={selectedLine}
       />
-      <BuslineSelectedContent selectedLine={selectedLine} />
+      <BuslineSelectedContent
+        selectedLine={selectedLine}
+      />
     </div>
   );
 };

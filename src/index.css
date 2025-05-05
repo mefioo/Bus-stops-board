@@ -5,7 +5,10 @@
   --bs-body-font-family: "Inter";
   --bs-body-font-size: 14px;
   --bs-body-bg: #f3f4f9;
-  --bs-border-width: 2px;
+  --bs-border-width: 1px;
+  --bs-border-bottom-width: 1px;
+  --bs-border-color: #e2e4ea;
+  --bs-btn-hover-bg: #f8f8fb;
   --bs-card-border-radius: 4px;
   --bs-link-color: #9a9da4;
   --bs-link-color-active: #33373c;
@@ -13,6 +16,7 @@
   --bs-primary-rbg: #1952e1;
   --card-bg: #fff;
   --border-dashed-color: #9a9da4;
+  --bs-btn-active-color: #1952e1;
 }
 
 a {
@@ -30,6 +34,26 @@ a.active {
 
 body {
   margin: 40px 32px;
+}
+
+h6 {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li .btn {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 19px;
+  text-align: left;
+  border-bottom-width: 1px;
+  border-color: #f3f4f9 !important;
+  font-weight: 400;
 }
 
 .btn {
@@ -62,8 +86,8 @@ body {
   border: 2px dashed var(--border-dashed-color);
 }
 
-.font-14 {
-  font-size: 14px;
+.font-12 {
+  font-size: 12px;
 }
 
 .font-24 {
