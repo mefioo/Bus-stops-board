@@ -12,7 +12,6 @@ const SearchInput: FC<PropTypes> = ({ className = "", onChange }) => {
   return (
     <div className={`position-relative search-input-wrapper ${className}`}>
       <input
-        type="search"
         id="search"
         onChange={onChange}
         placeholder={!focused ? "Search..." : ""}
