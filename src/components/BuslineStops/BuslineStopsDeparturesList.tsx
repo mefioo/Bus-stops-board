@@ -16,7 +16,7 @@ const BuslineStopsDeparturesList: FC<PropTypes> = ({
     ...new Set(
       selectedLineAndNameBusStops
         .map((item) => item.time)
-        .toSorted(sortBusStopsByTime)
+        .sort(sortBusStopsByTime)
     ),
   ];
 

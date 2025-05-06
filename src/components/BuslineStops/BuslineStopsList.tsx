@@ -40,8 +40,8 @@ const BuslineStopsList: FC<PropTypes> = ({
 
   const busStopNames = [
     ...new Set(
-      selectedBusStops
-        .toSorted(getStopSortFunctionByType(sortType))
+      [...selectedBusStops]
+        .sort(getStopSortFunctionByType(sortType))
         .map((stop) => stop.stop)
     ).values(),
   ];

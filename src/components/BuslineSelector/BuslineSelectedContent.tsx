@@ -10,7 +10,7 @@ import {
 } from "@/constants/placeholders";
 
 interface PropTypes {
-  selectedLine: SelectedLineType;
+  selectedLine?: SelectedLineType;
 }
 
 const BuslineSelectedContent: FC<PropTypes> = ({ selectedLine }) => {

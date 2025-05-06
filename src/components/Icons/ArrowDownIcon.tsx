@@ -7,6 +7,7 @@ interface PropTypes {
 const ArrowDownIcon: FC<PropTypes> = ({ onClick }) => {
   return (
     <svg
+      data-testid="arrow-down-icon"
       onClick={onClick}
       width="16"
       height="16"

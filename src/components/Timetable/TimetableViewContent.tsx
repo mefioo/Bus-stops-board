@@ -10,7 +10,7 @@ import { BusStopsContext } from "./BusStopsContext";
 
 const TimetableViewContent = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [allStops, setAllStops] = useState<StopType[]>([]);
+  const [allStops, setAllStops] = useState<StopType[] | []>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

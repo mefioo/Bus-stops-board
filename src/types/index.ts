@@ -15,3 +15,9 @@ export enum StopSortFunctionType {
   orderAsc,
   orderDesc,
 }
+
+export interface BusStopContextValueType {
+  loading: boolean;
+  error: string | null;
+  stops: StopType[] | [];
+}

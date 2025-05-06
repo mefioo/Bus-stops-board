@@ -3,7 +3,7 @@ import React from "react";
 
 interface PropTypes {
   availableLines: number[];
-  selectedLine: SelectedLineType;
+  selectedLine?: SelectedLineType;
   onLineSelect: (line: number) => void;
 }
 
@@ -12,7 +12,7 @@ const BusLineGrid = ({
   selectedLine,
   onLineSelect,
 }: PropTypes) => {
-  const sortedLines = availableLines.toSorted((a, b) => a - b);
+  const sortedLines = [...availableLines].sort((a, b) => a - b);
 
   return (
     <div className="d-flex flex-row gap-2 py-3 flex-wrap">

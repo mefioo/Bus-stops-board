@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 type PropTypes = {
-  item: NavigationItemType;
+  item: Pick<NavigationItemType, "name" | "path">;
 };
 
 const NavigationItem = ({ item }: PropTypes) => {
