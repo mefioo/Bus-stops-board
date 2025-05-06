@@ -1,15 +1,20 @@
 import { renderWithRouter } from "@/tests/test-utils";
 import MainView from "../MainView";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 
 describe("MainView", () => {
-  test("Displays proper header content for / path", () => {
+  test("Displays proper header content for / path", async () => {
     renderWithRouter(<MainView />, "/");
-    expect(screen.getByText("Timetable")).toBeInTheDocument();
-  });
 
-  test("Displays proper header content for /stops path", () => {
+    await waitFor(() => {
+      expect(screen.getByText("Timetable")).toBeInTheDocument();
+    });
+  });
+  test("Displays proper header content for /stops path", async () => {
     renderWithRouter(<MainView />, "/stops");
-    expect(screen.getByText("Timetable")).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText("Timetable")).toBeInTheDocument();
+    });
   });
 });

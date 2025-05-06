@@ -3,7 +3,7 @@ import MainView from "./views/MainView";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <MainView />
     </BrowserRouter>
   );

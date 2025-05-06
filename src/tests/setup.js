@@ -1,8 +1,13 @@
-import { afterEach } from "vitest";
+import { afterEach, beforeEach, vi } from "vitest";
+import * as axios from "axios";
 import { cleanup, render } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 
-// runs a clean after each test case (e.g. clearing jsdom)
+beforeEach(() => {
+  vi.mock("axios");
+});
+
 afterEach(() => {
   cleanup();
+  vi.clearAllMocks();
 });

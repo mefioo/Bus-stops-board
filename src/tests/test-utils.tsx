@@ -5,7 +5,14 @@ import { ReactNode } from "react";
 import { MemoryRouter } from "react-router-dom";
 
 export const renderWithRouter = (ui: ReactNode, initialEntry: string = "/") => {
-  return render(<MemoryRouter initialEntries={[initialEntry]}>{ui}</MemoryRouter>);
+  return render(
+    <MemoryRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      initialEntries={[initialEntry]}
+    >
+      {ui}
+    </MemoryRouter>
+  );
 };
 
 export const renderWithBusStopContext = (
